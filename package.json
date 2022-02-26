@@ -1,0 +1,30 @@
+{
+  "name": "mondaybot",
+  "version": "1.0.0",
+  "description": "A discord bot by AllusiveBox",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AllusiveBox/MondayBot.git"
+  },
+  "author": "AllusiveBox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AllusiveBox/MondayBot/issues"
+  },
+  "homepage": "https://github.com/AllusiveBox/MondayBot#readme",
+  "dependencies": {
+    "@allusivebox/bootstrap": "^1.0.1",
+    "discord.js": "^13.6.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "jest-extended": "^2.0.0",
+    "jest-runner-groups": "^2.1.0",
+    "ts-jest": "^27.1.3"
+  }
+}

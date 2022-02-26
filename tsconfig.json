@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "outDir": "build",
+        "removeComments": true,
+        "target": "ES6",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "noImplicitOverride": true
+    },
+    "include": [
+        ".src/**/*"
+    ],
+    "exclude": ["node_modules"]
+}
