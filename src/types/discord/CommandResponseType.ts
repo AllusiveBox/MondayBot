@@ -1,6 +1,14 @@
 import { CustomType } from "@allusivebox/bootstrap";
 import DiscordUtil from "../../utils/DiscordUtil";
 
+/**
+ *
+ * A class containing data that indicates how a command will response when used.
+ *
+ * @class CommandResponseType
+ * @extends CustomType
+ *
+ */
 export default class CommandResponseType extends CustomType {
 
     /** Private static variables */
