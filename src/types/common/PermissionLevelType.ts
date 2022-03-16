@@ -1,10 +1,10 @@
-import { CustomType } from "@allusivebox/bootstrap";
+import { CustomType, TypeUtil } from "@allusivebox/bootstrap";
 
 export default class PermissionLevelType extends CustomType {
 
     /** Private static variables */
 
-    protected static override TYPE = "PermissionLevel";
+    protected static override TYPE = "PermissionLevelType";
 
     /** Private variables */
 
@@ -62,12 +62,46 @@ export default class PermissionLevelType extends CustomType {
      */
     public static OWNER = new PermissionLevelType("OWNER", "Owner");
 
+    /**
+     *
+     * An array containing a list of all the permission level types currently supported.
+     *
+     * @type {Array<PermissionLevelType>}
+     * @static
+     *
+     */
     public static SUPPORTED_TYPES = [
         PermissionLevelType.ADMIN,
         PermissionLevelType.BOT,
         PermissionLevelType.MOD,
         PermissionLevelType.NONE,
         PermissionLevelType.OWNER
+    ];
+
+     /**
+     *
+     * Array containing the permission levels that qualify as superuser.
+     *
+     * @type {Array<PermissionLevelType>}
+     * @static
+     *
+     */
+    public static SUPER_USER_LIST = [
+        PermissionLevelType.OWNER,
+        PermissionLevelType.ADMIN
+    ];
+
+    /**
+     *
+     * Array containing the permission levels that quality as a privileged user.
+     *
+     * @type {Array<PermissionLevelType>}
+     * @static
+     *
+     */
+    public static PRIVILEGED_USER_LIST = [
+        ...PermissionLevelType.SUPER_USER_LIST,
+        PermissionLevelType.MOD
     ];
 
     /** Public variables */
@@ -110,7 +144,12 @@ export default class PermissionLevelType extends CustomType {
     public static getPermissionLevelType(code: string): PermissionLevelType {
         let permissionLevelType: PermissionLevelType;
 
-        switch(code.toLowerCase()) {
+        // type guard
+        if (TypeUtil.isNotString(code)) {
+            throw Error(`Unsupported type ${typeof code} provided`);
+        }
+
+        switch(code?.toLowerCase()) {
             case PermissionLevelType.ADMIN.getCode().toLowerCase():
                 permissionLevelType = PermissionLevelType.ADMIN;
                 break;
@@ -198,11 +237,7 @@ export default class PermissionLevelType extends CustomType {
      * @returns {boolean} True if the user has mod, admin, or owner permissions, otherwise false.
      *
      */
-    isPrivilegedUser(): boolean {
-        return this === PermissionLevelType.OWNER
-            || this === PermissionLevelType.ADMIN
-            || this === PermissionLevelType.MOD;
-    }
+    isPrivilegedUser(): boolean { return PermissionLevelType.PRIVILEGED_USER_LIST.includes(this); }
 
     /**
      *
@@ -211,10 +246,7 @@ export default class PermissionLevelType extends CustomType {
      * @returns {boolean} True if the user has admin or owner permissions, otherwise false.
      *
      */
-    isSuperUser(): boolean {
-        return this === PermissionLevelType.OWNER
-            || this === PermissionLevelType.ADMIN;
-    }
+    isSuperUser(): boolean { return PermissionLevelType.SUPER_USER_LIST.includes(this); }
 
     /** Transformative functions */
 

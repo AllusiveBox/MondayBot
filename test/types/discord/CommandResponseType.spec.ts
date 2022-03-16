@@ -3,6 +3,16 @@ import "jest-extended";
 
 /**
  *
+ * Variable for the magic number representing the number of variables that should be in the
+ * {@link CommandResponseType.SUPPORTED_TYPES} array.
+ *
+ * @type {number}
+ *
+ */
+const SUPPORTED_COMMAND_RESPONSE_TYPE_COUNT = 5;
+
+/**
+ *
  * CommandResponseType Unit Tests
  *
  * @group unit
@@ -101,6 +111,10 @@ describe("CommandResponseType unit test suite", () => {
         CommandResponseType.RESPONSE_IN_CHANNEL])
     ("that given %s, validateType should return true", (commandResponseType) => {
         expect(CommandResponseType.validateType(commandResponseType));
+    });
+
+    test("that the number of supported CommandResponseTypes is the correct amount", () => {
+        expect(CommandResponseType.SUPPORTED_TYPES).toBeArrayOfSize(SUPPORTED_COMMAND_RESPONSE_TYPE_COUNT);
     });
 
 });
