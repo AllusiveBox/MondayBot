@@ -28,6 +28,16 @@ export default class CommandResponseType extends CustomType {
 
     /** Protected static variables */
 
+    /**
+     *
+     * The typing for the CommandResponseType.
+     *
+     * @type {string}
+     * @protected
+     * @static
+     * @override
+     *
+     */
     protected static override TYPE = "CommandResponseType";
 
     /** Public static variables */
