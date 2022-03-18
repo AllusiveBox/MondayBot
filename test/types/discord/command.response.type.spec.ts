@@ -1,4 +1,4 @@
-import CommandResponseType from "../../../src/types/discord/CommandResponseType";
+import CommandResponseType from "../../../src/types/discord/command.response.type";
 import "jest-extended";
 
 /**

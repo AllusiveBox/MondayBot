@@ -1,4 +1,4 @@
-import PermissionLevelType from "../../../src/types/common/PermissionLevelType";
+import PermissionLevelType from "../../../src/types/common/permission.level.type";
 import "jest-extended";
 
 /**

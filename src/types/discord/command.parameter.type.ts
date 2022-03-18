@@ -1,5 +1,5 @@
 import { CustomType } from "@allusivebox/bootstrap";
-import DiscordUtil from "../../utils/DiscordUtil";
+import DiscordUtil from "../../utils/discord.util";
 
 /**
  *

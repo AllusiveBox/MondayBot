@@ -1,4 +1,4 @@
-import CommandParameterType from "../../../src/types/discord/CommandParameterType";
+import CommandParameterType from "../../../src/types/discord/command.parameter.type";
 import "jest-extended";
 
 /**

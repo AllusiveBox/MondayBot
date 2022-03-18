@@ -1,4 +1,4 @@
-import DiscordUtil from "../../src/utils/DiscordUtil";
+import DiscordUtil from "../../src/utils/discord.util";
 import "jest-extended";
 
 /**
