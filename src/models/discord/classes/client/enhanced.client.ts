@@ -1,7 +1,8 @@
 import { Client, ClientOptions, Collection, Intents } from "discord.js";
 import CommandCore from "../commands/command.core";
-import { EnvironmentType, ProcessUtil } from "@allusivebox/bootstrap";
+import { EnvironmentType, LoggerService, ProcessUtil, TypeUtil } from "@allusivebox/bootstrap";
 import EnhancedClientData, { LogChannels } from "../../interfaces/typing/constructors/client/enhanced.client.data";
+import { IsValid } from "../../interfaces/typing/return/shared/is.valid";
 
 /**
  *
@@ -113,7 +114,7 @@ export default class EnhancedClient extends Client {
      * @private
      *
      */
-    readonly #ownerId;
+    #ownerId;
 
     /**
      *
@@ -215,7 +216,16 @@ export default class EnhancedClient extends Client {
 
     /** Constructor */
 
-    constructor(options: EnhancedClientData) {
+
+    // todo: zakauff 4/13/2022 Flesh out parameter comments
+    /**
+     *
+     * Creates an instance of the EnhancedClient class.
+     * @param {EnhancedClientData} options
+     * @constructor
+     *
+     */
+    constructor(options?: EnhancedClientData) {
         // Get the start time before calculating anything
         const startTime = new Date();
 
@@ -267,6 +277,86 @@ export default class EnhancedClient extends Client {
     /** Private static functions */
 
     /** Private functions */
+
+    // todo: zakauff 4/13/2022 Add comments to all the validation methods
+
+    #validateCommandSize(): void {
+        // todo: zakauff 4/13/2022 This should ultimately require the number of commands to be larger than 0,
+        //  otherwise the bot script should terminate.
+    }
+
+    #validateDb(): void {
+        // todo: zakauff 4/13/2022 This should ultimately validate the DB connection, otherwise the bot script
+        //  should terminate.
+    }
+
+    #validateOwnerId(): void {
+        if (TypeUtil.isNullOrUndefined(this.#ownerId)) {
+            this.#nullOrUndefined.push("ownerId");
+        }
+    }
+
+    // todo: zakauff 4/13/2022 Add comment to the init method
+
+    #init(): void {
+        // todo: zakauff 4/13/2022 Create a boot logger? Until then everything is console log?
+        console.log(`Start time: ${this.#startTime}`);
+
+        // The first two args are node specific and can be ignored
+        const firstArg = process.argv[2] ? process.argv[2] : 0;
+
+        // If there are extra arguments after the first one, note it to grab later, if necessary
+        const additionalArgs = !!process.argv[3];
+
+        // todo: zakauff 4/13/2022 Figure out how to handle passesd arguments
+        console.log(`First argument: ${firstArg}`);
+        console.log(`All argument(s): ${process.argv}`);
+
+        console.log("Beginning loading process");
+        // todo: zakauff 4/13/2022 This is where we would load in the Discord specific stuff like commands, roles,
+        //  and the owner ID, if it's not already set
+
+        console.log("Begin client validation");
+
+
+    }
+
+    /**
+     *
+     * Validates the enhanced client instance. If the instance is not valid, it will report why.
+     *
+     * @private
+     * @returns {IsValid}
+     *
+     */
+    #isValid(): IsValid {
+        let message = "";
+
+        // Reset the arrays to ensure no spill over
+        this.#invalid = new Array<string>();
+        this.#nullOrUndefined = new Array<string>();
+
+        this.#validateCommandSize();
+
+        this.#validateDb();
+
+        this.#validateOwnerId();
+
+        // Build the null or undefined list
+        this.#nullOrUndefined.forEach((field) => {
+            message += `${field} is either null or void and cannot be;`;
+        });
+
+        // Build the invalid list
+        this.#invalid.forEach((field) => {
+            message += `${field} is malformed;`;
+        });
+
+        return {
+            valid: message === "",
+            message: message
+        };
+    }
 
     /** Protected static functions */
 

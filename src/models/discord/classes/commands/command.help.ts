@@ -3,7 +3,7 @@ import CommandResponseType from "../../../../types/discord/command.response.type
 import CommandParameterType from "../../../../types/discord/command.parameter.type";
 import { CommandHelpData, RequiredCommandHelpData } from "../../interfaces/typing/constructors/commands/command.help.data";
 import { StringUtil, TypeUtil } from "@allusivebox/bootstrap";
-import { CommandHelpIsValid } from "../../interfaces/typing/return/commands/command.help.is.valid";
+import { IsValid } from "../../interfaces/typing/return/shared/is.valid";
 
 /**
  *
@@ -402,11 +402,11 @@ export default class CommandHelp {
      *
      * Validates to see if the CommandHelp instance is valid or not.
      *
-     * @returns {CommandHelpIsValid} An object containing a flag indicating if the command help object is valid, and
+     * @returns {IsValid} An object containing a flag indicating if the command help object is valid, and
      * a message containing any errors if not.
      *
      */
-    isValid(): CommandHelpIsValid {
+    isValid(): IsValid {
         // Create default message
         let message = "";
 

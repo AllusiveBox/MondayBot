@@ -6,10 +6,11 @@
         "target": "ES6",
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "noImplicitOverride": true
+        "noImplicitOverride": true,
+        "module": "CommonJS"
     },
     "include": [
-        ".src/**/*.ts",
+        "src/**/*.ts",
         "./global.d.ts"
     ],
     "exclude": ["node_modules"]
