@@ -2,7 +2,7 @@ import PermissionLevelType from "../../../../types/common/permission.level.type"
 import CommandResponseType from "../../../../types/discord/command.response.type";
 import CommandParameterType from "../../../../types/discord/command.parameter.type";
 import { CommandHelpData, RequiredCommandHelpData } from "../../interfaces/typing/constructors/commands/command.help.data";
-import { StringUtil, TypeUtil } from "@allusivebox/bootstrap";
+import { StringUtil, TypesUtil } from "@allusivebox/bootstrap";
 import { IsValid } from "../../interfaces/typing/return/shared/is.valid";
 
 /**
@@ -284,7 +284,7 @@ export default class CommandHelp {
         const fieldName = "commandResponseType";
 
         // If the field is null or undefined...
-        if (TypeUtil.isNullOrUndefined(this.#commandResponseType)) {
+        if (TypesUtil.isNullOrUndefined(this.#commandResponseType)) {
             this.#nullOrUndefinedFields.push(fieldName);
         }
 
@@ -307,12 +307,12 @@ export default class CommandHelp {
         const fieldName = "description";
 
         // If the field is null or undefined...
-        if (TypeUtil.isNullOrUndefined(this.#description)) {
+        if (TypesUtil.isNullOrUndefined(this.#description)) {
             this.#nullOrUndefinedFields.push(fieldName);
         }
 
         // Else if the field is not a string...
-        else if (TypeUtil.isNotString(this.#description)) {
+        else if (TypesUtil.isNotString(this.#description)) {
             this.#invalidFields.push(fieldName);
         }
     }
@@ -330,12 +330,12 @@ export default class CommandHelp {
         const fieldName = "enabled";
 
         // If the field is null or undefined...
-        if (TypeUtil.isNullOrUndefined(this.#enabled)) {
+        if (TypesUtil.isNullOrUndefined(this.#enabled)) {
             this.#nullOrUndefinedFields.push(fieldName);
         }
 
         // Else if the field is not a boolean...
-        else if (TypeUtil.isNotBoolean(this.#enabled)) {
+        else if (TypesUtil.isNotBoolean(this.#enabled)) {
             this.#invalidFields.push(fieldName);
         }
     }
@@ -353,7 +353,7 @@ export default class CommandHelp {
         const fieldName = "name";
 
         // If the field is null or undefined...
-        if (TypeUtil.isNullOrUndefined(this.#name)) {
+        if (TypesUtil.isNullOrUndefined(this.#name)) {
             this.#nullOrUndefinedFields.push(fieldName);
         }
 
@@ -361,7 +361,7 @@ export default class CommandHelp {
             Else if the field is not a string
             OR the field is an empty string...
          */
-        else if ((TypeUtil.isNotString(this.#name))
+        else if ((TypesUtil.isNotString(this.#name))
             || (StringUtil.isEmpty(this.#name))) {
             this.#invalidFields.push(fieldName);
         }
@@ -380,7 +380,7 @@ export default class CommandHelp {
         const fieldName = "permissionLevel";
 
         // If the field is null or undefined...
-        if (TypeUtil.isNullOrUndefined(this.#permissionLevel)) {
+        if (TypesUtil.isNullOrUndefined(this.#permissionLevel)) {
             this.#nullOrUndefinedFields.push(fieldName);
         }
 

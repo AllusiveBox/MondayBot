@@ -1,4 +1,4 @@
-import { CustomType, TypeUtil } from "@allusivebox/bootstrap";
+import { CustomType, TypesUtil } from "@allusivebox/bootstrap";
 
 export default class PermissionLevelType extends CustomType {
 
@@ -145,7 +145,7 @@ export default class PermissionLevelType extends CustomType {
         let permissionLevelType: PermissionLevelType;
 
         // type guard
-        if (TypeUtil.isNotString(code)) {
+        if (TypesUtil.isNotString(code)) {
             throw Error(`Unsupported type ${typeof code} provided`);
         }
 

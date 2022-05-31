@@ -1,6 +1,6 @@
 import { Client, ClientOptions, Collection, Intents } from "discord.js";
 import CommandCore from "../commands/command.core";
-import { EnvironmentType, LoggerService, ProcessUtil, TypeUtil } from "@allusivebox/bootstrap";
+import { EnvironmentType, LogService, ProcessUtil, TypesUtil } from "@allusivebox/bootstrap";
 import EnhancedClientData, { LogChannels } from "../../interfaces/typing/constructors/client/enhanced.client.data";
 import { IsValid } from "../../interfaces/typing/return/shared/is.valid";
 
@@ -291,7 +291,7 @@ export default class EnhancedClient extends Client {
     }
 
     #validateOwnerId(): void {
-        if (TypeUtil.isNullOrUndefined(this.#ownerId)) {
+        if (TypesUtil.isNullOrUndefined(this.#ownerId)) {
             this.#nullOrUndefined.push("ownerId");
         }
     }
